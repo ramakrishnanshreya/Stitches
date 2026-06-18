@@ -1,64 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stitches is a music-social app concept for turning lyric fragments into shareable visual patches and stitched storylines.">
+    <title>Stitches | Music App Concept</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        :root {
+            color-scheme: dark;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .stitch-frame {
+            background-image:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.16) 50%, transparent 50%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.16) 50%, transparent 50%),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.16) 50%, transparent 50%),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.16) 50%, transparent 50%);
+            background-position: top, bottom, left, right;
+            background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+            background-size: 16px 1px, 16px 1px, 1px 16px, 1px 16px;
+        }
+
+        .thread-line {
+            background-image: repeating-linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.32) 0,
+                rgba(255, 255, 255, 0.32) 12px,
+                transparent 12px,
+                transparent 24px
+            );
+        }
+
+        .grain {
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12), transparent 20%),
+                radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 24%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 32%);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
-<body class="bg-[#120a1a] text-white min-h-screen">
-
-    <main class="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row gap-16 items-center min-h-screen">
-        
-        <div class="md:w-1/2 flex flex-col items-center text-center">
-            <h1 class="text-7xl font-semibold mb-6">Stitches 🧵</h1>
-            <p class="text-xl text-purple-200 leading-relaxed max-w-md">
-                Your thoughts, curated by your favorite lyrics. Express exactly how you feel by stitching together lines from the songs you love.
-            </p>
-            <div class="mt-8 px-6 py-2 bg-white/5 rounded-full text-sm text-purple-300 border border-white/10 animate-pulse">
-                → Swipe to explore
+<body class="bg-black text-white antialiased">
+    <header class="fixed inset-x-0 top-0 z-20 border-b border-white/10 bg-black/80 backdrop-blur">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+            <a href="#top" class="text-sm font-semibold uppercase tracking-[0.32em]">Stitches</a>
+            <div class="hidden items-center gap-6 text-sm text-white/70 sm:flex">
+                <a class="transition hover:text-white" href="#concept">Concept</a>
+                <a class="transition hover:text-white" href="#flow">Flow</a>
+                <a class="transition hover:text-white" href="#features">Features</a>
             </div>
-        </div>
+            <a href="https://github.com/ramakrishnanshreya/Stitches" class="rounded-full border border-white px-4 py-2 text-sm font-medium transition hover:bg-white hover:text-black">
+                GitHub
+            </a>
+        </nav>
+    </header>
 
-        <div class="md:w-1/2 w-full overflow-x-auto no-scrollbar flex gap-8 py-4">
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"I look to you to see the truth"</p>
-                <a href="https://youtu.be/ImKY6TZEyrI" class="text-md text-purple-300 hover:text-white transition">Mazzy Star — Fade into you</a>
-            </div>
-            
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"Is this the life, the one you imagined?"</p>
-                <a href="https://youtu.be/Ux-FP1yRTTQ" class="text-md text-purple-300 hover:text-white transition">She Wants Revenge — Take the world</a>
-            </div>
+    <main id="top">
+        <section class="relative min-h-screen overflow-hidden pt-24">
+            <div class="absolute inset-0 grain opacity-50"></div>
+            <div class="absolute left-1/2 top-28 h-[560px] w-[560px] -translate-x-1/2 rounded-full border border-white/10"></div>
+            <div class="absolute inset-x-0 top-[46%] h-px thread-line opacity-70"></div>
 
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"I've wept and I've stumbled. I've fought and I've craved for the gravy of your soul"</p>
-                <a href="https://youtu.be/MCIaj-oLi28" class="text-md text-purple-300 hover:text-white transition">Susanne Sundfør — White foxes</a>
-            </div>
+            <div class="relative mx-auto flex min-h-[calc(100vh-6rem)] max-w-6xl flex-col justify-center px-5 py-16">
+                <div class="max-w-3xl">
+                    <p class="mb-5 text-sm font-semibold uppercase tracking-[0.36em] text-white/60">Music app concept</p>
+                    <h1 class="max-w-4xl text-6xl font-semibold leading-none tracking-normal text-white sm:text-7xl lg:text-8xl">
+                        Turn lyric fragments into stitched stories.
+                    </h1>
+                    <p class="mt-7 max-w-2xl text-lg leading-8 text-white/72">
+                        Stitches is a mobile app concept for collecting lyric patches, arranging them in sequence, and sharing expressive music-based stories through a minimal black-and-white interface.
+                    </p>
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a href="#concept" class="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/80">
+                            View project
+                        </a>
+                        <a href="#flow" class="rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:border-white">
+                            Explore flow
+                        </a>
+                    </div>
+                </div>
 
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"I do not struggle in your web because it was my aim to get caught"</p>
-                <a href="https://youtu.be/-zgIiwohjR4" class="text-md text-purple-300 hover:text-white transition">Fiona apple — The first taste</a>
+                <div class="mt-14 flex gap-4 overflow-x-auto pb-6 no-scrollbar">
+                    <article class="stitch-frame min-w-[260px] bg-white p-5 text-black shadow-2xl shadow-black">
+                        <p class="text-xs font-bold uppercase tracking-[0.28em] text-black/50">Patch 01</p>
+                        <p class="mt-8 text-2xl font-semibold leading-tight">A saved lyric becomes a visual card.</p>
+                        <p class="mt-8 text-sm text-black/60">Collect</p>
+                    </article>
+                    <article class="stitch-frame min-w-[260px] bg-black p-5 text-white ring-1 ring-white/25">
+                        <p class="text-xs font-bold uppercase tracking-[0.28em] text-white/50">Patch 02</p>
+                        <p class="mt-8 text-2xl font-semibold leading-tight">Cards can be reordered into a mood.</p>
+                        <p class="mt-8 text-sm text-white/60">Arrange</p>
+                    </article>
+                    <article class="stitch-frame min-w-[260px] bg-white p-5 text-black shadow-2xl shadow-black">
+                        <p class="text-xs font-bold uppercase tracking-[0.28em] text-black/50">Patch 03</p>
+                        <p class="mt-8 text-2xl font-semibold leading-tight">The sequence becomes one shareable stitch.</p>
+                        <p class="mt-8 text-sm text-black/60">Share</p>
+                    </article>
+                    <article class="stitch-frame min-w-[260px] bg-black p-5 text-white ring-1 ring-white/25">
+                        <p class="text-xs font-bold uppercase tracking-[0.28em] text-white/50">Patch 04</p>
+                        <p class="mt-8 text-2xl font-semibold leading-tight">Friends can like, comment, and discover more.</p>
+                        <p class="mt-8 text-sm text-white/60">Connect</p>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"Let the sky fall, when it crumbles, we will stand tall and Face it all together"</p>
-                <a href="https://youtu.be/DeumyOzKqgI" class="text-md text-purple-300 hover:text-white transition">Adele — Skyfall</a>
+        <section id="concept" class="border-y border-white/10 bg-white text-black">
+            <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+                <div>
+                    <p class="text-sm font-semibold uppercase tracking-[0.32em] text-black/50">The idea</p>
+                    <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl">
+                        A music diary built from lyric patches.
+                    </h2>
+                </div>
+                <div class="space-y-6 text-lg leading-8 text-black/70">
+                    <p>
+                        Stitches is designed for moments when a lyric says the thing better than a status update can. Users save short lyric fragments as patches, then arrange multiple patches into a stitch that captures a feeling, memory, relationship, or phase.
+                    </p>
+                    <p>
+                        The product combines music discovery with personal expression. Instead of endless posts, the interface focuses on a small set of meaningful actions: collect, order, stitch, like, comment, and share.
+                    </p>
+                </div>
             </div>
+        </section>
 
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"And if you get too far inside. You'll only see my reflection"</p>
-                <a href="https://youtu.be/XX4EpkR-Sp4" class="text-md text-purple-300 hover:text-white transition">Radiohead — Climbing up the walls</a>
+        <section id="flow" class="bg-black">
+            <div class="mx-auto max-w-6xl px-5 py-20">
+                <div class="max-w-2xl">
+                    <p class="text-sm font-semibold uppercase tracking-[0.32em] text-white/50">Product flow</p>
+                    <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl">
+                        From account creation to a complete stitch.
+                    </h2>
+                </div>
+
+                <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <article class="stitch-frame min-h-[240px] p-6">
+                        <p class="text-sm text-white/50">01</p>
+                        <h3 class="mt-8 text-2xl font-semibold">Create account</h3>
+                        <p class="mt-4 text-sm leading-6 text-white/65">Full name, email, username, and password start the user profile.</p>
+                    </article>
+                    <article class="stitch-frame min-h-[240px] p-6">
+                        <p class="text-sm text-white/50">02</p>
+                        <h3 class="mt-8 text-2xl font-semibold">Browse patches</h3>
+                        <p class="mt-4 text-sm leading-6 text-white/65">Users discover lyric patches in a focused feed with like and share actions.</p>
+                    </article>
+                    <article class="stitch-frame min-h-[240px] p-6">
+                        <p class="text-sm text-white/50">03</p>
+                        <h3 class="mt-8 text-2xl font-semibold">Choose order</h3>
+                        <p class="mt-4 text-sm leading-6 text-white/65">Selected patches become a horizontal card list that can be ordered into a stitch.</p>
+                    </article>
+                    <article class="stitch-frame min-h-[240px] p-6">
+                        <p class="text-sm text-white/50">04</p>
+                        <h3 class="mt-8 text-2xl font-semibold">Publish stitch</h3>
+                        <p class="mt-4 text-sm leading-6 text-white/65">The finished stitch can be shared, revisited, liked, and discussed.</p>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <div class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-lg min-w-[400px] h-[300px] flex flex-col justify-center">
-                <p class="text-2xl font-medium italic mb-6 text-white">"Even though we're miles apart we are each other's destiny"</p>
-                <a href="https://youtu.be/U_OKigBRqBI" class="text-md text-purple-300 hover:text-white transition">Zero 7 — Destiny</a>
+        <section id="features" class="bg-neutral-950">
+            <div class="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-[1fr_1fr]">
+                <div>
+                    <p class="text-sm font-semibold uppercase tracking-[0.32em] text-white/50">Feature set</p>
+                    <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl">
+                        Built around simple, repeatable app actions.
+                    </h2>
+                </div>
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="border border-white/10 p-5">
+                        <h3 class="font-semibold">Login and signup</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/60">A complete entry flow for returning and new users.</p>
+                    </div>
+                    <div class="border border-white/10 p-5">
+                        <h3 class="font-semibold">Lyric patch feed</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/60">Browse short expressive cards without visual clutter.</p>
+                    </div>
+                    <div class="border border-white/10 p-5">
+                        <h3 class="font-semibold">Horizontal stitches</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/60">A scrollable card sequence replaces stacked layouts.</p>
+                    </div>
+                    <div class="border border-white/10 p-5">
+                        <h3 class="font-semibold">Social actions</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/60">Like, share, comment, and profile navigation patterns.</p>
+                    </div>
+                    <div class="border border-white/10 p-5">
+                        <h3 class="font-semibold">Monochrome UI</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/60">Black-and-white surfaces with stitched border details.</p>
+                    </div>
+                    <div class="border border-white/10 p-5">
+                        <h3 class="font-semibold">Prototype-ready flow</h3>
+                        <p class="mt-2 text-sm leading-6 text-white/60">Screens are organized around a testable app journey.</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
+        <section class="bg-white text-black">
+            <div class="mx-auto max-w-6xl px-5 py-16">
+                <div class="thread-line mb-10 h-px bg-black/30"></div>
+                <div class="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-[0.32em] text-black/50">Repository status</p>
+                        <h2 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-normal">
+                            A polished project page for the Stitches app concept.
+                        </h2>
+                    </div>
+                    <a href="https://github.com/ramakrishnanshreya/Stitches" class="rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800">
+                        View repository
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <footer class="border-t border-white/10 bg-black px-5 py-8">
+        <div class="mx-auto flex max-w-6xl flex-col justify-between gap-3 text-sm text-white/50 sm:flex-row">
+            <p>Stitches by Shreya Ramakrishnan.</p>
+            <p>Music expression, lyric patches, and stitched stories.</p>
+        </div>
+    </footer>
 </body>
 </html>
