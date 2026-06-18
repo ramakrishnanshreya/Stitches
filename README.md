@@ -2,7 +2,7 @@
 
 Stitches is a concept music-social app for turning favorite lyric moments into shareable visual patches. Users can save short lyric fragments, arrange them into a stitched sequence, and build an emotional narrative through music instead of plain text.
 
-The project explores how music discovery, self-expression, and lightweight social interaction can come together in a minimal black-and-white interface inspired by fabric labels, thread, and hand-stitched collage.
+The project explores how music discovery, self-expression, and lightweight social interaction can come together.
 
 ## Project Overview
 
